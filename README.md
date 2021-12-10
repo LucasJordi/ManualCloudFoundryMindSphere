@@ -12,7 +12,7 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 
 <a href="#breve">Primeiros passos</a>
 <ul>
-<li><a href=""> Conectando com o cloud foundry</a></li>
+<li><a href="#breve.1"> Conectando com o cloud foundry</a></li>
 
 </ul>
 
@@ -27,9 +27,9 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 <a href="#deploy">Deploy de aplicação</a>
 
 <ul>
-<li><a href="">Configuração manifest.ylm</a></li>
+<li><a href="#deploy.1">Configuração manifest.ylm</a></li>
 
-<li><a href="">Publicando no Cloud Foundry</a></li>
+<li><a href="#deploy.2">Publicando no Cloud Foundry</a></li>
 
 </ul>
 
@@ -40,9 +40,9 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 <a href="#services">Serviços</a>
 
 <ul>
-<li><a href="">Criando um serviço</a></li>
-<li><a href="">Criando as chaves do serviço</a></li>
-<li><a href="">Acessando serviços utilizando SSH</a></li>
+<li><a href="#services.1">Criando um serviço</a></li>
+<li><a href="#services.2">Criando as chaves do serviço</a></li>
+<li><a href="#services.3">Acessando serviços utilizando SSH</a></li>
 
 
 </ul>
@@ -57,6 +57,8 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 <a id="breve"></a>
 ## Primeiros passos
 
+
+<a id="breve.1"></a>
 ### Conectando com o cloud foundry
 No terminal utilize o comando ```` cf login -a https://api.cf.eu1.mindsphere.io --sso ````
 
@@ -124,6 +126,8 @@ Antes de continuar assegure-se de ter uma conta com perfil SpaceDeveloper. Utili
 
 A aplicação utilizada para deploy foi desenvolvida em Spring Boot.
 
+
+<a id="deploy.1"></a>
 ### Configuração manifest.ylm
 
 Essa aplicação utiliza o serviço do Postgresql para mais informações visite a sessão <a href="#services">Serviços</a>
@@ -136,7 +140,7 @@ A configuração básica do manifest.ylm para o projeto é:
 
 ````
 
-
+<a id="deploy.2"></a>
 ###  Publicando no Cloud Foundry
 
 Finalizando as configurações basta apenas utilizar o comando ```` cf push ````.
@@ -153,6 +157,8 @@ Finalizando as configurações basta apenas utilizar o comando ```` cf push ````
 
 O serviço utilizado será o do Postgresql
 
+
+<a id="services.1"></a>
 ### Criando um serviço 
 
 Para criar um serviço primeiramente é preciso saber os serviços disponíveis para uso, utilize o seguinte comando:
@@ -175,6 +181,7 @@ Antes de utilizar o serviço aguarde alguns minutos até que o status seja atual
 ![Screenshot](./img/mind10.PNG)
 
 
+<a id="services.2"></a>
 ### Criando as chaves do serviço
 
 Para o caso do projeto é preciso criar chaves para acesso ao banco do Postgres:
@@ -200,6 +207,9 @@ A resposta deve ser algo como:
 ![Screenshot](./img/mind11.PNG)
 
 Agora é só adicionar o serviço no manifest.yml e as keys na sua aplicação para poder utilizar o serviço.
+
+
+<a id="services.3"></a>
 ### Acessando serviços utilizando SSH
 
 ````
