@@ -13,6 +13,11 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 ## Primeiros passos
 
 ### Conectando com o cloud foundry
+No terminal utilize o comando ```` cf login -a https://api.cf.eu1.mindsphere.io --sso ````.
+
+Se estiver tudo certo vai ser gerado um link para geração de token de autenticação. Esse link deve ser colado no navegador.
+
+
 
 
 
