@@ -10,25 +10,46 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 
 <li> 
 
-<a href="">Primeiros passos</a>
+<a href="#breve">Primeiros passos</a>
+<ul>
+<li><a href=""> Conectando com o cloud foundry</a></li>
+
+</ul>
 
 </li>
 
 <li> 
 
-<a href="">Configurando conta e/ou ambiente</a> </li>
+<a href="#ambiente">Configurando conta e/ou ambiente</a> </li>
 
 <li> 
 
-<a href="">Deploy de aplicação</a>
+<a href="#deploy">Deploy de aplicação</a>
+
+<ul>
+<li><a href="">Configuração manifest.ylm</a></li>
+
+<li><a href="">Publicando no Cloud Foundry</a></li>
+
+</ul>
 
 </li>
 
 <li> 
 
-<a href="">Serviços</a>
+<a href="#services">Serviços</a>
+
+<ul>
+<li><a href="">Criando um serviço</a></li>
+<li><a href="">Criando as chaves do serviço</a></li>
+<li><a href="">Acessando serviços utilizando SSH</a></li>
+
+
+</ul>
 
 </li>
+
+<li><a href="#ref">Referências</a></li>
 
 </ol>
 
@@ -52,7 +73,7 @@ Após inserir o código é gerado um token que deve ser adicionado a requisiçã
 
 Tudo certo! Se o código for validado com sucesso você já está autorizado para acessar a plataforma.
 
-O retorno precisa ser algo como:
+Se tudo der certo o retorno será equivalente:
 
 ````
 API endpoint:   https://api.cf.eu1.mindsphere.io
@@ -67,7 +88,7 @@ space:          SPACE DA SUA EMPRESA
 
 
 <a id="ambiente"></a>
-## Configurando conta/ambiente
+## Configurando conta e/ou ambiente
 
 ### Caso sua org e/ou space não estejam disponíveis ou não estiver autorizado para fazer o push de uma aplicação
 
@@ -99,7 +120,28 @@ Pronto! Agora o usuário está apto para dar o deploy de uma aplicação.
 <a id="deploy"></a>
 ## Deploy de aplicação
 
-A aplicação utilizada para deploy foi desenvolvida em Spring Boot
+Antes de continuar assegure-se de ter uma conta com perfil SpaceDeveloper. Utilize o comando ```` cf space-users ORG SPACE ```` .
+
+A aplicação utilizada para deploy foi desenvolvida em Spring Boot.
+
+### Configuração manifest.ylm
+
+Essa aplicação utiliza o serviço do Postgresql para mais informações visite a sessão <a href="#services">Serviços</a>
+
+A configuração básica do manifest.ylm para o projeto é:
+
+````
+
+
+
+````
+
+
+###  Publicando no Cloud Foundry
+
+Finalizando as configurações basta apenas utilizar o comando ```` cf push ````.
+
+
 
 
 
@@ -206,10 +248,20 @@ Lembrar de colocar a porta escolhida no SSH e não a que está na key. Nesse cas
 
 
 
+<a id="ref"></a>
+## Referências
+
+[Serviços e Keys](https://docs.cloudfoundry.org/devguide/services/service-keys.html#create)
+
+[Conectando serviços com SSH](https://docs.cloudfoundry.org/devguide/deploy-apps/ssh-services.html)
+
+[Perfis de autorização](https://docs.cloudfoundry.org/concepts/roles.html#orgs)
+
+[Deploy Spring Apps](https://docs.cloudfoundry.org/buildpacks/java/getting-started-deploying-apps/gsg-spring.html)
 
 
 
-
+[Publicando apps](https://docs.cloudfoundry.org/devguide/deploy-apps/deploy-app.html)
 
 
 
