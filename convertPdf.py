@@ -46,6 +46,11 @@ figcaption{
 img{
   width:80%
 }
+pre{
+    background-color:#f2f2f2ff;
+    border-radius:10px;
+    padding-left:1%
+}
 </style>"""+html)
 
 

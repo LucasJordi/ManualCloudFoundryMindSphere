@@ -118,9 +118,9 @@ Para criar uma Org e Space use os seguintes comandos (Para executar esse comando
 cf create-org ORG
 
 cf create-space SPACE [-o ORG] [-q SPACE_QUOTA]
-
-</pre>
 </code>
+</pre>
+
 
 Onde "ORG" e "SPACE" é o nome que deseja dar a Org e o Space respectivamente.
 
@@ -131,9 +131,9 @@ Para dar o push de uma aplicação é preciso ter a autorização SpaceDeveloper
 <code>
 cf set-org-role USERNAME ORG OrgManager
 cf set-space-role USERNAME ORG SPACE SpaceDeveloper
+</code>
 
 </pre>
-</code>
 
 Onde "USERNAME" é o usuário que deseja atribuir a autorização.
 
@@ -177,11 +177,9 @@ applications:
     disk_quota: 500MB #Quantidade de espaço disponível para a aplicação
     services:
       - NOMESERVIÇO  #Nome do serviço criado
-    
-
-
-</pre>
 </code>
+</pre>
+
 
 <a id="deploy.2"></a>
 ###  Publicando no Cloud Foundry
@@ -209,8 +207,9 @@ Para criar um serviço primeiramente é preciso saber os serviços disponíveis 
 <pre>
 <code>
 cf marketplace
-</pre>
 </code>
+</pre>
+
 
 <figure>
   <img src="./img/mind6.PNG">
@@ -222,8 +221,8 @@ Para o projeto será utilizado o serviço postgresql94 com o plano postgresql-m.
 <pre>
 <code>
 cf create-service SERVIÇO PLANO NOMESERVIÇO
-</pre>
 </code>
+</pre>
 Para o projeto ficaria o seguinte: <code> cf create-service postgresql94 postgresql-m postgresql-carsharing</code>.
 
 
@@ -247,17 +246,18 @@ cf create-service-key NOMEDOSERVIÇOCRIADO NOMEDAKEY
 Exemplo :
 
 cf create-service-key postgresql-carsharing cimatec
-</pre>
 </code>
+</pre>
+
 
 Se a key foi criada com sucesso basta executar o comando:
 
 <pre>
 <code>
 cf service-key NOMEDOSERVIÇO NOMEDAKEY
-
-</pre>
 </code>
+</pre>
+
 
 A resposta deve ser algo como:
 
@@ -275,9 +275,9 @@ Agora é só adicionar o serviço no manifest.yml e as keys na sua aplicação p
 <pre>
 <code>
 cf ssh -L PORTA:HOSTNAME:PORTADOSERVIÇO NOMEDOAPPQUEUTILIZAOSERVIÇO
-
+</code>   
 </pre>
-</code>    
+ 
 
 Digamos que tenha sido criado um serviço chamado serviço1 que é utilizado pela aplicação 1 cadastrada no sistema como app1 cujas keys são:
 
@@ -298,9 +298,9 @@ Digamos que tenha sido criado um serviço chamado serviço1 que é utilizado pel
     "username": "fdsuufidudfjufsdsdufi"
   }
 }
-
-</pre>
 </code>
+</pre>
+
 
 Então o comando seria <code> cf ssh -L 63306:ueueue-psql-master-alias.node.dc1.sjusu:5432 app1</code>
 
