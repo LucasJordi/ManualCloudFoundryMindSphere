@@ -1,4 +1,5 @@
-<style type="text/css">
+<head style="display:none">
+<style  type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap');
 body{
   font-family: 'Roboto', sans-serif;;
@@ -38,6 +39,7 @@ img{
   width:80%
 }
 </style>
+</head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
