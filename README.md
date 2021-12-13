@@ -1,45 +1,4 @@
-<head>
-<style  type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap');
-body{
-  font-family: 'Roboto', sans-serif;;
-  font-size: 14px;
-  line-height: 1.5;
-  background-color: var(--color-canvas-default);
-  margin-left:5%;
-  word-wrap: break-word;    
-}
-h1{
-  margin-top:2%;
-  text-align:center;
-}
-h2{
-  margin-top:5%
-}
-a{    
-  text-decoration: none;
-}
-li{
-  margin-bottom:2%;
-  margin-top:2%
-}
-ol{
-  margin-bottom:5%
-}
-figure{
-  margin-bottom:5%;
-  margin-top:5%;
-  width:80%
-}
-figcaption{
-  font-size:12px;
-  font-weight:bold
-}
-img{
-  width:80%
-}
-</style>
-</head>
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
