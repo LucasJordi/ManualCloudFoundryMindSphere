@@ -1,4 +1,4 @@
-<head style="display:none">
+<head>
 <style  type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap');
 body{
