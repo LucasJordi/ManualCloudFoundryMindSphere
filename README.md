@@ -152,7 +152,7 @@ A aplicação utilizada para deploy foi desenvolvida em Spring Boot.
 Para gerar o arquivo .war, usando o STS, acessar "File->Export-> Selecionar Web -> Clicar em WAR File"
 
 <figure>
-  <img src="./img/mind20.PNG">
+  <img src="./img/mind22.PNG">
   <figcaption>Fig.4 - Geração de arquivo .War no STS.</figcaption>
 </figure>
 
