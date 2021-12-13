@@ -1,7 +1,8 @@
-<h1> Manual utilização da plataforma Mindsphere</h1>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<h1> Manual utilização Cloud Foundry (MindSphere)</h1>
 
 
-O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Por enquanto o único público alvo desse trabalho é o próprio autor.
+
 
 ## Sumário
 
@@ -12,7 +13,7 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 
 <a href="#breve">Primeiros passos</a>
 <ul>
-<li><a href="#breve.1"> Conectando com o cloud foundry</a></li>
+<li><a href="#breve.1"> Conectando-se ao cloud foundry</a></li>
 
 </ul>
 
@@ -60,9 +61,9 @@ O intuito desse projeto é aprender a operar e entender como funciona o OCPP. Po
 
 <a id="breve.1"></a>
 ### Conectando com o cloud foundry
-No terminal utilize o comando ```` cf login -a https://api.cf.eu1.mindsphere.io --sso ````
+No terminal utilize o comando <code> cf login -a https://api.cf.eu1.mindsphere.io --sso </code>
 
-![Screenshot](./img/mind1.PNG)
+<img src="./img/mind1.PNG" >
 
 Se estiver tudo certo vai ser gerado um link para geração de token de autenticação. Esse link deve ser colado no navegador.
 
@@ -77,13 +78,15 @@ Tudo certo! Se o código for validado com sucesso você já está autorizado par
 
 Se tudo der certo o retorno será equivalente:
 
-````
+<pre>
+<code>
 API endpoint:   https://api.cf.eu1.mindsphere.io
 API version:    3.107.0
 user:           SEU USUÁRIO
 org:            ORG DA SUA EMPRESA
 space:          SPACE DA SUA EMPRESA
-````
+</code>
+</pre>
 
 
 
@@ -97,23 +100,27 @@ space:          SPACE DA SUA EMPRESA
 Para poder dar o deploy e gerenciar suas aplicações é preciso que a conta esteja atrelada a um org e space (para mais informações acesse a sessão de referências).
 Para criar uma Org e Space use os seguintes comandos (Para executar esse comando é preciso ter perfil administrador).
 
-````
+<pre>
+<code>
 cf create-org ORG
 
 cf create-space SPACE [-o ORG] [-q SPACE_QUOTA]
 
-````
+</pre>
+</code>
 
 Onde "ORG" e "SPACE" é o nome que deseja dar a Org e o Space respectivamente.
 
 Para poder dar o push de uma aplicação é preciso ter a autorização SpaceDeveloper. Para isso use os seguintes comandos:
 
 
-````
+<pre>
+<code>
 cf set-org-role USERNAME ORG OrgManager
 cf set-space-role USERNAME ORG SPACE SpaceDeveloper
 
-````
+</pre>
+</code>
 
 Onde "USERNAME" é o usuário que deseja atribuir a autorização.
 
@@ -122,9 +129,16 @@ Pronto! Agora o usuário está apto para dar o deploy de uma aplicação.
 <a id="deploy"></a>
 ## Deploy de aplicação
 
-Antes de continuar assegure-se de ter uma conta com perfil SpaceDeveloper. Utilize o comando ```` cf space-users ORG SPACE ```` .
+Antes de continuar assegure-se de ter uma conta com perfil SpaceDeveloper. Utilize o comando <code> cf space-users ORG SPACE </code> .
 
 A aplicação utilizada para deploy foi desenvolvida em Spring Boot.
+
+
+<a id="deploy.0"></a>
+### Gerando arquivo .war
+Para gerar o arquivo .war, acessar "File->Export-> Selecionar Web -> Clicar em WAR File"
+![Screenshot](./img/mind20.PNG)
+
 
 
 <a id="deploy.1"></a>
@@ -134,16 +148,29 @@ Essa aplicação utiliza o serviço do Postgresql para mais informações visite
 
 A configuração básica do manifest.ylm para o projeto é:
 
-````
+<pre>
+<code>
+applications:
+  - name: NOMEAPLICAÇÃO 
+    instances: 1
+    buildpacks: 
+      - java_buildpack
+    path: ./APP.war  #Caminho da aplicação
+    random-route: true
+    memory: 1024MB   #Quantidade de memória ram 
+    disk_quota: 500MB #Quantidade de espaço disponível para a aplicação
+    services:
+      - NOMESERVIÇO  #Nome do serviço criado
+    
 
 
-
-````
+</pre>
+</code>
 
 <a id="deploy.2"></a>
 ###  Publicando no Cloud Foundry
 
-Finalizando as configurações basta apenas utilizar o comando ```` cf push ````.
+Finalizando as configurações basta apenas utilizar o comando <code> cf push </code>
 
 
 
@@ -163,20 +190,24 @@ O serviço utilizado será o do Postgresql
 
 Para criar um serviço primeiramente é preciso saber os serviços disponíveis para uso, utilize o seguinte comando:
 
-````
+<pre>
+<code>
 cf marketplace
-````
+</pre>
+</code>
 ![Screenshot](./img/mind6.PNG)
 
 Para o projeto será utilizado o serviço postgresql94 com o plano postgresql-m. Para criar um serviço no seu Space utilize:
 
-````
+<pre>
+<code>
 cf create-service SERVIÇO PLANO NOMESERVIÇO
-````
-Para o projeto ficaria o seguinte: ```` cf create-service postgresql94 postgresql-m postgresql-carsharing ````
+</pre>
+</code>
+Para o projeto ficaria o seguinte: <code> cf create-service postgresql94 postgresql-m postgresql-carsharing </code>
 
 
-Antes de utilizar o serviço aguarde alguns minutos até que o status seja atualizado para "create succeeded" para verificar utilize o comando ```` cf services ```` e localize o serviço criado.
+Antes de utilizar o serviço aguarde alguns minutos até que o status seja atualizado para "create succeeded" para verificar utilize o comando <code> cf services </code> e localize o serviço criado.
 
 ![Screenshot](./img/mind10.PNG)
 
@@ -186,21 +217,25 @@ Antes de utilizar o serviço aguarde alguns minutos até que o status seja atual
 
 Para o caso do projeto é preciso criar chaves para acesso ao banco do Postgres:
 
-````
+<pre>
+<code>
 cf create-service-key NOMEDOSERVIÇOCRIADO NOMEDAKEY
 
 
 Exemplo :
 
 cf create-service-key postgresql-carsharing cimatec
-````
+</pre>
+</code>
 
 Se a key foi criada com sucesso basta executar o comando:
 
-````
+<pre>
+<code>
 cf service-key NOMEDOSERVIÇO NOMEDAKEY
 
-````
+</pre>
+</code>
 
 A resposta deve ser algo como:
 
@@ -212,14 +247,17 @@ Agora é só adicionar o serviço no manifest.yml e as keys na sua aplicação p
 <a id="services.3"></a>
 ### Acessando serviços utilizando SSH
 
-````
+<pre>
+<code>
 cf ssh -L PORTA:HOSTNAME:PORTADOSERVIÇO NOMEDOAPPQUEUTILIZAOSERVIÇO
 
-````    
+</pre>
+</code>    
 
 Digamos que tenha sido criado um serviço chamado serviço1 que é utilizado pela aplicação 1 cadastrada no sistema como app1 cujas keys são:
 
-````
+<pre>
+<code>
 {
   "credentials": {
     "host": "ueueue-psql-master-alias.node.dc1.sjusu",
@@ -236,9 +274,10 @@ Digamos que tenha sido criado um serviço chamado serviço1 que é utilizado pel
   }
 }
 
-````
+</pre>
+</code>
 
-Então o comando seria ```` cf ssh -L 63306:ueueue-psql-master-alias.node.dc1.sjusu:5432 app1````
+Então o comando seria <code> cf ssh -L 63306:ueueue-psql-master-alias.node.dc1.sjusu:5432 app1</code>
 
 ![Screenshot](./img/mind12.PNG)
 Imagem mostra o resultado da conexão estabelecida.
@@ -268,8 +307,6 @@ Lembrar de colocar a porta escolhida no SSH e não a que está na key. Nesse cas
 [Perfis de autorização](https://docs.cloudfoundry.org/concepts/roles.html#orgs)
 
 [Deploy Spring Apps](https://docs.cloudfoundry.org/buildpacks/java/getting-started-deploying-apps/gsg-spring.html)
-
-
 
 [Publicando apps](https://docs.cloudfoundry.org/devguide/deploy-apps/deploy-app.html)
 
