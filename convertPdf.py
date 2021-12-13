@@ -1,6 +1,6 @@
 import markdown
 
-import pdfkit
+
 
 with open('README.md', 'r', encoding="utf8") as f:
     text = f.read()
