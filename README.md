@@ -1,4 +1,48 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap');
+  body{
+    font-family: 'Roboto', sans-serif;;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: var(--color-canvas-default);
+    margin-left:5%;
+    word-wrap: break-word;    
+  }
+  h1{
+    margin-top:2%;
+    text-align:center;
+  }
+  h2{
+    margin-top:5%
+  }
+  a{    
+    text-decoration: none;
+  }
+  li{
+    margin-bottom:2%;
+    margin-top:2%
+  }
+  ol{
+    margin-bottom:5%
+  }
+  figure{
+    margin-bottom:5%;
+    margin-top:5%;
+    width:80%
+  }
+  figcaption{
+    font-size:12px;
+    font-weight:bold
+  }
+  img{
+    width:80%
+  }
+  
+
+</style>  
+
+
 <h1> Manual utilização Cloud Foundry (MindSphere)</h1>
 
 
@@ -63,17 +107,23 @@
 ### Conectando com o cloud foundry
 No terminal utilize o comando <code> cf login -a https://api.cf.eu1.mindsphere.io --sso </code>
 
-<img src="./img/mind1.PNG" >
 
-Se estiver tudo certo vai ser gerado um link para geração de token de autenticação. Esse link deve ser colado no navegador.
+<figure>
+  <img src="./img/mind1.PNG" >
+ <figcaption>Fig.1 - Terminal do cf.</figcaption>
+</figure>
+Se estiver tudo certo vai aparecer um link para geração de token de autenticação. Esse link deve ser colado no navegador.
 
-![Screenshot](./img/mind2.PNG)
-
+<figure>
+   <img src="./img/mind2.PNG">
+ <figcaption>Fig.2 - Tela de verificação de identidade.</figcaption>
+</figure>
 
 Após inserir o código é gerado um token que deve ser adicionado a requisição no terminal.
-
-![Screenshot](./img/mind5.PNG)
-
+<figure>
+  <img src="./img/mind5.PNG">
+  <figcaption>Fig.3 - Token de autenticação.</figcaption>
+</figure>
 Tudo certo! Se o código for validado com sucesso você já está autorizado para acessar a plataforma.
 
 Se tudo der certo o retorno será equivalente:
@@ -97,7 +147,7 @@ space:          SPACE DA SUA EMPRESA
 
 ### Caso sua org e/ou space não estejam disponíveis ou não estiver autorizado para fazer o push de uma aplicação
 
-Para poder dar o deploy e gerenciar suas aplicações é preciso que a conta esteja atrelada a um org e space (para mais informações acesse a sessão de referências).
+Para dar o deploy e gerenciar suas aplicações é preciso que a conta esteja atrelada a um org e space (para mais informações acesse a sessão de referências).
 Para criar uma Org e Space use os seguintes comandos (Para executar esse comando é preciso ter perfil administrador).
 
 <pre>
@@ -111,7 +161,7 @@ cf create-space SPACE [-o ORG] [-q SPACE_QUOTA]
 
 Onde "ORG" e "SPACE" é o nome que deseja dar a Org e o Space respectivamente.
 
-Para poder dar o push de uma aplicação é preciso ter a autorização SpaceDeveloper. Para isso use os seguintes comandos:
+Para dar o push de uma aplicação é preciso ter a autorização SpaceDeveloper. Para isso use os seguintes comandos:
 
 
 <pre>
@@ -136,9 +186,12 @@ A aplicação utilizada para deploy foi desenvolvida em Spring Boot.
 
 <a id="deploy.0"></a>
 ### Gerando arquivo .war
-Para gerar o arquivo .war, acessar "File->Export-> Selecionar Web -> Clicar em WAR File"
-![Screenshot](./img/mind20.PNG)
+Para gerar o arquivo .war, usando o STS, acessar "File->Export-> Selecionar Web -> Clicar em WAR File"
 
+<figure>
+  <img src="./img/mind20.PNG">
+  <figcaption>Fig.4 - Geração de arquivo .War no STS.</figcaption>
+</figure>
 
 
 <a id="deploy.1"></a>
@@ -195,8 +248,11 @@ Para criar um serviço primeiramente é preciso saber os serviços disponíveis 
 cf marketplace
 </pre>
 </code>
-![Screenshot](./img/mind6.PNG)
 
+<figure>
+  <img src="./img/mind6.PNG">
+  <figcaption>Fig.5 - Serviços disponíveis no marketplace do cf.</figcaption>
+</figure>
 Para o projeto será utilizado o serviço postgresql94 com o plano postgresql-m. Para criar um serviço no seu Space utilize:
 
 <pre>
@@ -204,13 +260,15 @@ Para o projeto será utilizado o serviço postgresql94 com o plano postgresql-m.
 cf create-service SERVIÇO PLANO NOMESERVIÇO
 </pre>
 </code>
-Para o projeto ficaria o seguinte: <code> cf create-service postgresql94 postgresql-m postgresql-carsharing </code>
+Para o projeto ficaria o seguinte: <code> cf create-service postgresql94 postgresql-m postgresql-carsharing</code>.
 
 
 Antes de utilizar o serviço aguarde alguns minutos até que o status seja atualizado para "create succeeded" para verificar utilize o comando <code> cf services </code> e localize o serviço criado.
 
-![Screenshot](./img/mind10.PNG)
-
+<figure>
+  <img src="./img/mind10.PNG">
+  <figcaption>Fig.6 - Criação de serviço.</figcaption>
+</figure>
 
 <a id="services.2"></a>
 ### Criando as chaves do serviço
@@ -239,8 +297,10 @@ cf service-key NOMEDOSERVIÇO NOMEDAKEY
 
 A resposta deve ser algo como:
 
-![Screenshot](./img/mind11.PNG)
-
+<figure>
+  <img src="./img/mind11.PNG">
+  <figcaption>Fig.7 - Chaves de acesso serviço do postgresql.</figcaption>
+</figure>
 Agora é só adicionar o serviço no manifest.yml e as keys na sua aplicação para poder utilizar o serviço.
 
 
@@ -279,19 +339,27 @@ Digamos que tenha sido criado um serviço chamado serviço1 que é utilizado pel
 
 Então o comando seria <code> cf ssh -L 63306:ueueue-psql-master-alias.node.dc1.sjusu:5432 app1</code>
 
-![Screenshot](./img/mind12.PNG)
+<figure>
+  <img src="./img/mind12.PNG">
+  <figcaption>Fig.8 - Resultado de conexão com o container usando SSH.</figcaption>
+</figure>
+
 Imagem mostra o resultado da conexão estabelecida.
 
 Agora se quisermos acessar o banco utilizamos o serviço do Postgresql instalado na máquina. Para esse caso foi utilizado o PhpAdmin.
 
-
-![Screenshot](./img/mind13.PNG)
-
+<figure>
+  <img src="./img/mind13.PNG">
+  <figcaption>Fig.9 - Conexão do banco usando o PhpMyAdmin.</figcaption>
+</figure>
 Lembrar de colocar a porta escolhida no SSH e não a que está na key. Nesse caso é a 63306.
 
 
+<figure>
+  <img src="./img/mind14.PNG">
+  <figcaption>Fig.10 - Tabelas do banco cadastrado no cf.</figcaption>
+</figure>
 
-![Screenshot](./img/mind14.PNG)
 
 É possível ver que as tabelas batem com as do projeto.
 

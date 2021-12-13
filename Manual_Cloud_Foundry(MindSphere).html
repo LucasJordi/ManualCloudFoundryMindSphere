@@ -1,4 +1,47 @@
 <p><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></p>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap');
+  body{
+    font-family: 'Roboto', sans-serif;;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: var(--color-canvas-default);
+    margin-left:5%;
+    word-wrap: break-word;    
+  }
+  h1{
+    margin-top:2%;
+    text-align:center;
+  }
+  h2{
+    margin-top:5%
+  }
+  a{    
+    text-decoration: none;
+  }
+  li{
+    margin-bottom:2%;
+    margin-top:2%
+  }
+  ol{
+    margin-bottom:5%
+  }
+  figure{
+    margin-bottom:5%;
+    margin-top:5%;
+    width:80%
+  }
+  figcaption{
+    font-size:12px;
+    font-weight:bold
+  }
+  img{
+    width:80%
+  }
+
+
+</style>
+
 <h1> Manual utilização Cloud Foundry (MindSphere)</h1>
 
 <h2>Sumário</h2>
@@ -54,11 +97,21 @@
 <p><a id="breve.1"></a></p>
 <h3>Conectando com o cloud foundry</h3>
 <p>No terminal utilize o comando <code> cf login -a https://api.cf.eu1.mindsphere.io --sso </code></p>
-<p><img src="./img/mind1.PNG" ></p>
-<p>Se estiver tudo certo vai ser gerado um link para geração de token de autenticação. Esse link deve ser colado no navegador.</p>
-<p><img alt="Screenshot" src="./img/mind2.PNG" /></p>
+<figure>
+  <img src="./img/mind1.PNG" >
+ <figcaption>Fig.1 - Terminal do cf.</figcaption>
+</figure>
+<p>Se estiver tudo certo vai aparecer um link para geração de token de autenticação. Esse link deve ser colado no navegador.</p>
+<figure>
+   <img src="./img/mind2.PNG">
+ <figcaption>Fig.2 - Tela de verificação de identidade.</figcaption>
+</figure>
+
 <p>Após inserir o código é gerado um token que deve ser adicionado a requisição no terminal.</p>
-<p><img alt="Screenshot" src="./img/mind5.PNG" /></p>
+<figure>
+  <img src="./img/mind5.PNG">
+  <figcaption>Fig.3 - Token de autenticação.</figcaption>
+</figure>
 <p>Tudo certo! Se o código for validado com sucesso você já está autorizado para acessar a plataforma.</p>
 <p>Se tudo der certo o retorno será equivalente:</p>
 <pre>
@@ -74,7 +127,7 @@ space:          SPACE DA SUA EMPRESA
 <p><a id="ambiente"></a></p>
 <h2>Configurando conta e/ou ambiente</h2>
 <h3>Caso sua org e/ou space não estejam disponíveis ou não estiver autorizado para fazer o push de uma aplicação</h3>
-<p>Para poder dar o deploy e gerenciar suas aplicações é preciso que a conta esteja atrelada a um org e space (para mais informações acesse a sessão de referências).
+<p>Para dar o deploy e gerenciar suas aplicações é preciso que a conta esteja atrelada a um org e space (para mais informações acesse a sessão de referências).
 Para criar uma Org e Space use os seguintes comandos (Para executar esse comando é preciso ter perfil administrador).</p>
 <pre>
 <code>
@@ -85,7 +138,7 @@ cf create-space SPACE [-o ORG] [-q SPACE_QUOTA]
 </pre>
 <p></code></p>
 <p>Onde "ORG" e "SPACE" é o nome que deseja dar a Org e o Space respectivamente.</p>
-<p>Para poder dar o push de uma aplicação é preciso ter a autorização SpaceDeveloper. Para isso use os seguintes comandos:</p>
+<p>Para dar o push de uma aplicação é preciso ter a autorização SpaceDeveloper. Para isso use os seguintes comandos:</p>
 <pre>
 <code>
 cf set-org-role USERNAME ORG OrgManager
@@ -101,8 +154,12 @@ cf set-space-role USERNAME ORG SPACE SpaceDeveloper
 <p>A aplicação utilizada para deploy foi desenvolvida em Spring Boot.</p>
 <p><a id="deploy.0"></a></p>
 <h3>Gerando arquivo .war</h3>
-<p>Para gerar o arquivo .war, acessar "File-&gt;Export-&gt; Selecionar Web -&gt; Clicar em WAR File"
-<img alt="Screenshot" src="./img/mind20.PNG" /></p>
+<p>Para gerar o arquivo .war, usando o STS, acessar "File-&gt;Export-&gt; Selecionar Web -&gt; Clicar em WAR File"</p>
+<figure>
+  <img src="./img/mind20.PNG">
+  <figcaption>Fig.4 - Geração de arquivo .War no STS.</figcaption>
+</figure>
+
 <p><a id="deploy.1"></a></p>
 <h3>Configuração manifest.ylm</h3>
 <p>Essa aplicação utiliza o serviço do Postgresql para mais informações visite a sessão <a href="#services">Serviços</a></p>
@@ -138,17 +195,24 @@ applications:
 <code>
 cf marketplace
 </pre>
-<p></code>
-<img alt="Screenshot" src="./img/mind6.PNG" /></p>
+<p></code></p>
+<figure>
+  <img src="./img/mind6.PNG">
+  <figcaption>Fig.5 - Serviços disponíveis no marketplace do cf.</figcaption>
+</figure>
 <p>Para o projeto será utilizado o serviço postgresql94 com o plano postgresql-m. Para criar um serviço no seu Space utilize:</p>
 <pre>
 <code>
 cf create-service SERVIÇO PLANO NOMESERVIÇO
 </pre>
 <p></code>
-Para o projeto ficaria o seguinte: <code> cf create-service postgresql94 postgresql-m postgresql-carsharing </code></p>
+Para o projeto ficaria o seguinte: <code> cf create-service postgresql94 postgresql-m postgresql-carsharing</code>.</p>
 <p>Antes de utilizar o serviço aguarde alguns minutos até que o status seja atualizado para "create succeeded" para verificar utilize o comando <code> cf services </code> e localize o serviço criado.</p>
-<p><img alt="Screenshot" src="./img/mind10.PNG" /></p>
+<figure>
+  <img src="./img/mind10.PNG">
+  <figcaption>Fig.6 - Criação de serviço.</figcaption>
+</figure>
+
 <p><a id="services.2"></a></p>
 <h3>Criando as chaves do serviço</h3>
 <p>Para o caso do projeto é preciso criar chaves para acesso ao banco do Postgres:</p>
@@ -170,7 +234,10 @@ cf service-key NOMEDOSERVIÇO NOMEDAKEY
 </pre>
 <p></code></p>
 <p>A resposta deve ser algo como:</p>
-<p><img alt="Screenshot" src="./img/mind11.PNG" /></p>
+<figure>
+  <img src="./img/mind11.PNG">
+  <figcaption>Fig.7 - Chaves de acesso serviço do postgresql.</figcaption>
+</figure>
 <p>Agora é só adicionar o serviço no manifest.yml e as keys na sua aplicação para poder utilizar o serviço.</p>
 <p><a id="services.3"></a></p>
 <h3>Acessando serviços utilizando SSH</h3>
@@ -202,12 +269,23 @@ cf ssh -L PORTA:HOSTNAME:PORTADOSERVIÇO NOMEDOAPPQUEUTILIZAOSERVIÇO
 </pre>
 <p></code></p>
 <p>Então o comando seria <code> cf ssh -L 63306:ueueue-psql-master-alias.node.dc1.sjusu:5432 app1</code></p>
-<p><img alt="Screenshot" src="./img/mind12.PNG" />
-Imagem mostra o resultado da conexão estabelecida.</p>
+<figure>
+  <img src="./img/mind12.PNG">
+  <figcaption>Fig.8 - Resultado de conexão com o container usando SSH.</figcaption>
+</figure>
+
+<p>Imagem mostra o resultado da conexão estabelecida.</p>
 <p>Agora se quisermos acessar o banco utilizamos o serviço do Postgresql instalado na máquina. Para esse caso foi utilizado o PhpAdmin.</p>
-<p><img alt="Screenshot" src="./img/mind13.PNG" /></p>
+<figure>
+  <img src="./img/mind13.PNG">
+  <figcaption>Fig.9 - Conexão do banco usando o PhpMyAdmin.</figcaption>
+</figure>
 <p>Lembrar de colocar a porta escolhida no SSH e não a que está na key. Nesse caso é a 63306.</p>
-<p><img alt="Screenshot" src="./img/mind14.PNG" /></p>
+<figure>
+  <img src="./img/mind14.PNG">
+  <figcaption>Fig.10 - Tabelas do banco cadastrado no cf.</figcaption>
+</figure>
+
 <p>É possível ver que as tabelas batem com as do projeto.</p>
 <p><a id="ref"></a></p>
 <h2>Referências</h2>

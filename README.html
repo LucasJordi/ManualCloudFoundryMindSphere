@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<h1> Manual utilização Cloud Foundry (MindSphere)</h1>
+<h2 id="sum%C3%A1rio">Sumário</h2>
+<ol>
+<li> 
+<p><a href="#breve">Primeiros passos</a></p>
+<ul>
+<li><a href="#breve.1"> Conectando-se ao cloud foundry</a></li>
+</ul>
+</li>
+<li> 
+<p><a href="#ambiente">Configurando conta e/ou ambiente</a> </li></p>
+<li> 
+<p><a href="#deploy">Deploy de aplicação</a></p>
+<ul>
+<li><a href="#deploy.1">Configuração manifest.ylm</a></li>
+<li><a href="#deploy.2">Publicando no Cloud Foundry</a></li>
+</ul>
+</li>
+<li> 
+<p><a href="#services">Serviços</a></p>
+<ul>
+<li><a href="#services.1">Criando um serviço</a></li>
+<li><a href="#services.2">Criando as chaves do serviço</a></li>
+<li><a href="#services.3">Acessando serviços utilizando SSH</a></li>
+</ul>
+</li>
+<li><a href="#ref">Referências</a></li>
+</ol>
+<p><a id="breve"></a></p>
+<h2 id="primeiros-passos">Primeiros passos</h2>
+<p><a id="breve.1"></a></p>
+<h3 id="conectando-com-o-cloud-foundry">Conectando com o cloud foundry</h3>
+<p>No terminal utilize o comando <code> cf login -a https://api.cf.eu1.mindsphere.io --sso </code></p>
+<img src="./img/mind1.PNG" >
+<p>Se estiver tudo certo vai ser gerado um link para geração de token de autenticação. Esse link deve ser colado no navegador.</p>
+<p><img src="./img/mind2.PNG" alt="Screenshot"></p>
+<p>Após inserir o código é gerado um token que deve ser adicionado a requisição no terminal.</p>
+<p><img src="./img/mind5.PNG" alt="Screenshot"></p>
+<p>Tudo certo! Se o código for validado com sucesso você já está autorizado para acessar a plataforma.</p>
+<p>Se tudo der certo o retorno será equivalente:</p>
+<pre>
+<code>
+API endpoint:   https://api.cf.eu1.mindsphere.io
+API version:    3.107.0
+user:           SEU USUÁRIO
+org:            ORG DA SUA EMPRESA
+space:          SPACE DA SUA EMPRESA
+</code>
+</pre>
+<p><a id="ambiente"></a></p>
+<h2 id="configurando-conta-eou-ambiente">Configurando conta e/ou ambiente</h2>
+<h3 id="caso-sua-org-eou-space-n%C3%A3o-estejam-dispon%C3%ADveis-ou-n%C3%A3o-estiver-autorizado-para-fazer-o-push-de-uma-aplica%C3%A7%C3%A3o">Caso sua org e/ou space não estejam disponíveis ou não estiver autorizado para fazer o push de uma aplicação</h3>
+<p>Para poder dar o deploy e gerenciar suas aplicações é preciso que a conta esteja atrelada a um org e space (para mais informações acesse a sessão de referências).
+Para criar uma Org e Space use os seguintes comandos (Para executar esse comando é preciso ter perfil administrador).</p>
+<pre>
+<code>
+cf create-org ORG
+
+cf create-space SPACE [-o ORG] [-q SPACE_QUOTA]
+
+</pre>
+</code>
+<p>Onde &quot;ORG&quot; e &quot;SPACE&quot; é o nome que deseja dar a Org e o Space respectivamente.</p>
+<p>Para poder dar o push de uma aplicação é preciso ter a autorização SpaceDeveloper. Para isso use os seguintes comandos:</p>
+<pre>
+<code>
+cf set-org-role USERNAME ORG OrgManager
+cf set-space-role USERNAME ORG SPACE SpaceDeveloper
+
+</pre>
+</code>
+<p>Onde &quot;USERNAME&quot; é o usuário que deseja atribuir a autorização.</p>
+<p>Pronto! Agora o usuário está apto para dar o deploy de uma aplicação.</p>
+<p><a id="deploy"></a></p>
+<h2 id="deploy-de-aplica%C3%A7%C3%A3o">Deploy de aplicação</h2>
+<p>Antes de continuar assegure-se de ter uma conta com perfil SpaceDeveloper. Utilize o comando <code> cf space-users ORG SPACE </code> .</p>
+<p>A aplicação utilizada para deploy foi desenvolvida em Spring Boot.</p>
+<p><a id="deploy.0"></a></p>
+<h3 id="gerando-arquivo-war">Gerando arquivo .war</h3>
+<p>Para gerar o arquivo .war, acessar &quot;File-&gt;Export-&gt; Selecionar Web -&gt; Clicar em WAR File&quot;
+<img src="./img/mind20.PNG" alt="Screenshot"></p>
+<p><a id="deploy.1"></a></p>
+<h3 id="configura%C3%A7%C3%A3o-manifestylm">Configuração manifest.ylm</h3>
+<p>Essa aplicação utiliza o serviço do Postgresql para mais informações visite a sessão <a href="#services">Serviços</a></p>
+<p>A configuração básica do manifest.ylm para o projeto é:</p>
+<pre>
+<code>
+applications:
+  - name: NOMEAPLICAÇÃO 
+    instances: 1
+    buildpacks: 
+      - java_buildpack
+    path: ./APP.war  #Caminho da aplicação
+    random-route: true
+    memory: 1024MB   #Quantidade de memória ram 
+    disk_quota: 500MB #Quantidade de espaço disponível para a aplicação
+    services:
+      - NOMESERVIÇO  #Nome do serviço criado
+    
+
+
+</pre>
+</code>
+<p><a id="deploy.2"></a></p>
+<h3 id="publicando-no-cloud-foundry">Publicando no Cloud Foundry</h3>
+<p>Finalizando as configurações basta apenas utilizar o comando <code> cf push </code></p>
+<p><a id="services"></a></p>
+<h2 id="servi%C3%A7os">Serviços</h2>
+<p>O serviço utilizado será o do Postgresql</p>
+<p><a id="services.1"></a></p>
+<h3 id="criando-um-servi%C3%A7o">Criando um serviço</h3>
+<p>Para criar um serviço primeiramente é preciso saber os serviços disponíveis para uso, utilize o seguinte comando:</p>
+<pre>
+<code>
+cf marketplace
+</pre>
+</code>
+![Screenshot](./img/mind6.PNG)
+<p>Para o projeto será utilizado o serviço postgresql94 com o plano postgresql-m. Para criar um serviço no seu Space utilize:</p>
+<pre>
+<code>
+cf create-service SERVIÇO PLANO NOMESERVIÇO
+</pre>
+</code>
+Para o projeto ficaria o seguinte: <code> cf create-service postgresql94 postgresql-m postgresql-carsharing </code>
+<p>Antes de utilizar o serviço aguarde alguns minutos até que o status seja atualizado para &quot;create succeeded&quot; para verificar utilize o comando <code> cf services </code> e localize o serviço criado.</p>
+<p><img src="./img/mind10.PNG" alt="Screenshot"></p>
+<p><a id="services.2"></a></p>
+<h3 id="criando-as-chaves-do-servi%C3%A7o">Criando as chaves do serviço</h3>
+<p>Para o caso do projeto é preciso criar chaves para acesso ao banco do Postgres:</p>
+<pre>
+<code>
+cf create-service-key NOMEDOSERVIÇOCRIADO NOMEDAKEY
+
+
+Exemplo :
+
+cf create-service-key postgresql-carsharing cimatec
+</pre>
+</code>
+<p>Se a key foi criada com sucesso basta executar o comando:</p>
+<pre>
+<code>
+cf service-key NOMEDOSERVIÇO NOMEDAKEY
+
+</pre>
+</code>
+<p>A resposta deve ser algo como:</p>
+<p><img src="./img/mind11.PNG" alt="Screenshot"></p>
+<p>Agora é só adicionar o serviço no manifest.yml e as keys na sua aplicação para poder utilizar o serviço.</p>
+<p><a id="services.3"></a></p>
+<h3 id="acessando-servi%C3%A7os-utilizando-ssh">Acessando serviços utilizando SSH</h3>
+<pre>
+<code>
+cf ssh -L PORTA:HOSTNAME:PORTADOSERVIÇO NOMEDOAPPQUEUTILIZAOSERVIÇO
+
+</pre>
+</code>    
+<p>Digamos que tenha sido criado um serviço chamado serviço1 que é utilizado pela aplicação 1 cadastrada no sistema como app1 cujas keys são:</p>
+<pre>
+<code>
+{
+  "credentials": {
+    "host": "ueueue-psql-master-alias.node.dc1.sjusu",
+    "hosts": [
+      "ueueue-psql-master-alias.node.dc1.djndh",
+      "ueueue-psql-master-alias.node.dc1.sjiidiusu",
+      "ueueue-psql-master-alias.node.dc1.ddudu"
+    ],
+    "name": "ususuusu",
+    "password": "viidjfjidfijfdjifd",
+    "port": 5432,
+    "uri": "postgres://fijsgdsfiogdiogjdoigd:jidsfojofdjisdojifdjoidf@dfiudi-psql-master-alias.node.dc1.a9ssvc:5432/ususuusu",
+    "username": "fdsuufidudfjufsdsdufi"
+  }
+}
+
+</pre>
+</code>
+<p>Então o comando seria <code> cf ssh -L 63306:ueueue-psql-master-alias.node.dc1.sjusu:5432 app1</code></p>
+<p><img src="./img/mind12.PNG" alt="Screenshot">
+Imagem mostra o resultado da conexão estabelecida.</p>
+<p>Agora se quisermos acessar o banco utilizamos o serviço do Postgresql instalado na máquina. Para esse caso foi utilizado o PhpAdmin.</p>
+<p><img src="./img/mind13.PNG" alt="Screenshot"></p>
+<p>Lembrar de colocar a porta escolhida no SSH e não a que está na key. Nesse caso é a 63306.</p>
+<p><img src="./img/mind14.PNG" alt="Screenshot"></p>
+<p>É possível ver que as tabelas batem com as do projeto.</p>
+<p><a id="ref"></a></p>
+<h2 id="refer%C3%AAncias">Referências</h2>
+<p><a href="https://docs.cloudfoundry.org/devguide/services/service-keys.html#create">Serviços e Keys</a></p>
+<p><a href="https://docs.cloudfoundry.org/devguide/deploy-apps/ssh-services.html">Conectando serviços com SSH</a></p>
+<p><a href="https://docs.cloudfoundry.org/concepts/roles.html#orgs">Perfis de autorização</a></p>
+<p><a href="https://docs.cloudfoundry.org/buildpacks/java/getting-started-deploying-apps/gsg-spring.html">Deploy Spring Apps</a></p>
+<p><a href="https://docs.cloudfoundry.org/devguide/deploy-apps/deploy-app.html">Publicando apps</a></p>
+
+</body>
+</html>
