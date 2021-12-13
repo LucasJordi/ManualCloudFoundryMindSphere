@@ -317,7 +317,7 @@ Lembrar de colocar a porta escolhida no SSH e não a que está na key. Nesse cas
 
 
 <figure>
-  <img src="./img/mind14.PNG">
+  <img style="width:30%" src="./img/mind14.PNG">
   <figcaption>Fig.10 - Tabelas do banco cadastrado no cf.</figcaption>
 </figure>
 
