@@ -73,6 +73,7 @@ No terminal utilize o comando <code> cf login -a https://api.cf.eu1.mindsphere.i
   <img src="./img/mind1.PNG" >
  <figcaption>Fig.1 - Terminal do cf.</figcaption>
 </figure>
+
 Se estiver tudo certo vai aparecer um link para geração de token de autenticação. Esse link deve ser colado no navegador.
 
 <figure>
@@ -85,6 +86,7 @@ Após inserir o código é gerado um token que deve ser adicionado a requisiçã
   <img src="./img/mind5.PNG">
   <figcaption>Fig.3 - Token de autenticação.</figcaption>
 </figure>
+
 Tudo certo! Se o código for validado com sucesso você já está autorizado para acessar a plataforma.
 
 Se tudo der certo o retorno será equivalente:
@@ -214,6 +216,7 @@ cf marketplace
   <img src="./img/mind6.PNG">
   <figcaption>Fig.5 - Serviços disponíveis no marketplace do cf.</figcaption>
 </figure>
+
 Para o projeto será utilizado o serviço postgresql94 com o plano postgresql-m. Para criar um serviço no seu Space utilize:
 
 <pre>
@@ -262,6 +265,7 @@ A resposta deve ser algo como:
   <img src="./img/mind11.PNG">
   <figcaption>Fig.7 - Chaves de acesso serviço do postgresql.</figcaption>
 </figure>
+
 Agora é só adicionar o serviço no manifest.yml e as keys na sua aplicação para poder utilizar o serviço.
 
 
@@ -313,6 +317,7 @@ Agora se quisermos acessar o banco utilizamos o serviço do Postgresql instalado
   <img src="./img/mind13.PNG">
   <figcaption>Fig.9 - Conexão do banco usando o PhpMyAdmin.</figcaption>
 </figure>
+
 Lembrar de colocar a porta escolhida no SSH e não a que está na key. Nesse caso é a 63306.
 
 
