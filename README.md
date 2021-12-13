@@ -1,4 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap');
   body{
@@ -41,6 +42,7 @@
   
 
 </style>  
+</head>
 
 
 <h1> Manual utilização Cloud Foundry (MindSphere)</h1>
