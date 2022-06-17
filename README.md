@@ -33,7 +33,7 @@
 <a href="#deploy">Deploy de aplicação</a>
 
 <ul>
-<li><a href="#deploy.1">Configuração manifest.ylm</a></li>
+<li><a href="#deploy.1">Configuração manifest.yml</a></li>
 
 <li><a href="#deploy.2">Publicando no Cloud Foundry</a></li>
 
