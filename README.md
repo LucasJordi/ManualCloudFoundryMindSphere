@@ -311,7 +311,7 @@ Então o comando seria <code> cf ssh -L 63306:ueueue-psql-master-alias.node.dc1.
 
 Imagem mostra o resultado da conexão estabelecida.
 
-Agora se quisermos acessar o banco utilizamos o serviço do Postgresql instalado na máquina. Para esse caso foi utilizado o PhpAdmin.
+Agora se quisermos acessar o banco utilizamos o serviço do Postgresql instalado na máquina. Para esse caso foi utilizado o PgAdmin.
 
 <figure>
   <img src="./img/mind13.PNG">
